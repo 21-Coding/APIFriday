@@ -28,10 +28,29 @@ namespace AnimalShelter.Controllers
     [HttpGet("{id}")]
     public ActionResult<Bird> Get(int id)
     {
-        return _db.Birds.FirstOeDefault(tweety => tweety.BirdId == id);
+        return _db.Birds.FirstOrDefault(tweety => tweety.BirdId == id);
     }
 
     [HttpPost]
     public void Post([FromBody] Bird bird)
+    {
+      _db.Birds.Add(bird);
+      _db.SaveChanges();
+    }
+
+    [HttpPut("{id}")]
+    public void Put(int id, [FromBody] Bird bird)
+    {
+      _db.Entry(bird).State = EntityState.Modified;
+      _db.SaveChanges();
+    }
+
+    [HttpDelete("{id}")]
+    public void Delete(int id)
+    {
+      Bird leftNest = _db.Birds.FirstOrDefault(tweety => tweety.BirdId == id);
+      _db.Birds.Remove(leftNest);
+      _db.SaveChanges();
+    }
   }
 }

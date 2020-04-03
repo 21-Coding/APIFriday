@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using AnimalShelter.Models;
 
 namespace AnimalShelter.Controllers
 {
@@ -26,7 +28,7 @@ namespace AnimalShelter.Controllers
     [HttpGet("{id}")]
     public ActionResult<Dog> Get(int id)
     {
-      return _db.Dogs.FirstOeDefault(dawg => dawg.DogId == id);
+      return _db.Dogs.FirstOrDefault(dawg => dawg.DogId == id);
     }
 
     [HttpPost]
@@ -46,7 +48,7 @@ namespace AnimalShelter.Controllers
     [HttpDelete("{id}")]
     public void Delete(int id)
     {
-      Dog dawgGone = _db.Dogs.FirstOeDefault(dawg => dawg.Dog.Id == id);
+      Dog dawgGone = _db.Dogs.FirstOrDefault(dawg => dawg.Dog.Id == id);
       _db.Dogs.Remove(dawgGone);
       _db.SaveChanges();
     }
