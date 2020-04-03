@@ -6,40 +6,49 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AnimalShelter.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ValuesController : ControllerBase
+  [Route("api/[controller]")]
+  [ApiController]
+  public class DogsController : ControllerBase
+  {
+    private AnimalShelterContext _db;
+
+    public DogsController(AnimalShelterContext db)
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+      _db = db;
     }
+
+    [HttpGet]
+    public ActionResult<IEnumerable<Dog>> Get()
+    {
+      return _db.Dogs.ToList();
+    }
+
+    [HttpGet("{id}")]
+    public ActionResult<Dog> Get(int id)
+    {
+      return _db.Dogs.FirstOeDefault(dawg => dawg.DogId == id);
+    }
+
+    [HttpPost]
+    public void Post([FromBody] Dog dog)
+    {
+      _db.Dogs.Add(dog);
+      _db.SaveChanges();
+    }
+
+    [HttpPut("{id}")]
+    public void Put(int id, [FromBody] Dog dog)
+    {
+      _db.Entry(dog).State = EntityState.Modified;
+      _db.SaveChanges();
+    }
+
+    [HttpDelete("{id}")]
+    public void Delete(int id)
+    {
+      Dog dawgGone = _db.Dogs.FirstOeDefault(dawg => dawg.Dog.Id == id);
+      _db.Dogs.Remove(dawgGone);
+      _db.SaveChanges();
+    }
+  }
 }
