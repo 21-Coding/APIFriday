@@ -118,11 +118,26 @@ API for class, demonstrating making objects with API's.
 
 
 
-### Specs
+### Schema
 
-|Behavior| Input | Output |
+CREATE TABLE `dominique_youmans`.`Bird` (
+  `idBirds` INT NOT NULL AUTO_INCREMENT,
+  `BirdName` VARCHAR(45) NULL,
+  `BirdBreed` VARCHAR(45) NULL,
+  `BirdAge` INT NULL,
+  `BirdGender` VARCHAR(45) NULL,
+  PRIMARY KEY (`idBird`));
 
-|--|--|--|
+CREATE TABLE `dominique_youmans`.`Dog` (
+  `idDogs` INT NOT NULL AUTO_INCREMENT,
+  `DogName` VARCHAR(45) NULL,
+  `DogBreed` VARCHAR(45) NULL,
+  `DogAge` INT NULL,
+  `DogGender` VARCHAR(45) NULL,
+  PRIMARY KEY (`idDog`));
+
+
+
 
 
 
