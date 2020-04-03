@@ -26,9 +26,10 @@ namespace AnimalShelter.Models
       builder.Entity<Dog>()
       .HasData(
         new Dog { DogId = 1,  Name = "Nate", Breed = "Poodle", Age = 2, Gender = "Female" },
-        new Dog { DogId = 1,  Name = "Chuck", Breed = "Bulldog", Age = 4, Gender = "Male" },
-        new Dog { DogId = 1,  Name = "Vest", Breed = "Terrier", Age = 7, Gender = "Female" },
-        new Dog { DogId = 1,  Name = "Nick", Breed = "Weiner", Age = 2, Gender = "Male" }
+        new Dog { DogId = 2,  Name = "Chuck", Breed = "Bulldog", Age = 4, Gender = "Male" },
+        new Dog { DogId = 3,  Name = "Vest", Breed = "Terrier", Age = 7, Gender = "Female" },
+        new Dog { DogId = 4,  Name = "Nick", Breed = "Weiner", Age = 2, Gender = "Male" },
+        new Dog { DogId = 5,  Name = "Larry", Breed = "Beagle", Age = 2, Gender = "Female" }
         );
       }
     }
