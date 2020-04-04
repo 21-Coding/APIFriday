@@ -16,9 +16,9 @@ namespace AnimalShelter.Models
     {
       builder.Entity<Bird>()
       .HasData(
-        new Bird { BirdId = 1,  Name = "Bert", Breed = "Eagle", Age = 2, Gender = "Female" },
+        new Bird { BirdId = 1,  Name = "Bert", Breed = "Eagle", Age = 2, Gender = "Male" },
         new Bird { BirdId = 2,  Name = "Ernie", Breed = "Woodpecker", Age = 6, Gender = "Female" },
-        new Bird { BirdId = 3,  Name = "Elmo", Breed = "Hawk", Age = 1, Gender = "Female" },
+        new Bird { BirdId = 3,  Name = "Elmo", Breed = "Hawk", Age = 1, Gender = "Male" },
         new Bird { BirdId = 4,  Name = "Mator", Breed = "Red Robin", Age = 5, Gender = "Female" },
         new Bird { BirdId = 5,  Name = "Goofy", Breed = "Hummingbird", Age = 3, Gender = "Female" }
         );
